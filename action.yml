@@ -1,0 +1,21 @@
+name: 'Spawn save data-container action'
+description: 'Save a spawn data container'
+inputs:
+  dataContainer:
+    description: 'The data container to save'
+    required: true
+  additionalArgs:
+    description: 'Additional arguments to provide (e.g flags for a command)'
+    required: false
+    default: ''
+
+outputs:
+  newRevision:
+    description: 'The new data container revision'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.dataContainer }}
+    - ${{ inputs.additionalArgs }}
